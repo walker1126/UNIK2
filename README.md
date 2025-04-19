@@ -1,8 +1,6 @@
 # Unified Framework for Real-world Skeleton Action Recognition 
 
-[SSTA-PRS: Selective Spatio-Temporal Aggregation Based Pose Refinement System](https://openaccess.thecvf.com/content/WACV2021/papers/Yang_Selective_Spatio-Temporal_Aggregation_Based_Pose_Refinement_System_Towards_Understanding_Human_WACV_2021_paper.pdf) | [Project page](https://github.com/YangDi666/SSTA-PRS)  
 [UNIK: A Unified Framework for Real-world Skeleton-based Action Recognition](https://arxiv.org/pdf/2107.08580) | [Project page](https://yangdi666.github.io/UNIK-project/)  
-[ViA: View-invariant Skeleton Action Representation Learning via Motion Retargeting](https://arxiv.org/pdf/2209.00065.pdf) | [Project page](https://walker-a11y.github.io/ViA-project/)
 
 ## Evironment
 
@@ -44,13 +42,21 @@
              - ...
          -kinetics_raw\             
                 ...
+         -tsu_raw\
+           -tsu_skeletons
+             - ... .json
+               ... .json
+               ...
+           - smarthome_CV_51.json
+           - smarthome_CV_51.json
+   
          -...
              
  - Preprocess the data with
     ```
     cd data_gen
     python smarthome_gendata.py
-    python penn_gendata.py
+    python tsu_gendata.py
            ...
     ```
     
@@ -67,7 +73,7 @@ Pre-trained model is now avalable [here](https://drive.google.com/file/d/1K6RVaV
 
     ./weights/
 
-## Training (Fine-tuining) & Testing
+## Training (Fine-tuining) & Testing (Action Classification)
 
 Change the config file depending on what you want (e.g., for Smarthome).
 
@@ -95,21 +101,28 @@ For evaluation on Smarthome:
  
        python evaluation-cv.py runs/smarthome/smarthome_cv2_unik_test_joint_right.txt 19
        python evaluation-cv.py runs/smarthome/smarthome_cv1_unik_test_joint_right.txt 19
+   
+## Training (Fine-tuining) & Testing (Action Detection)
+
+Change the config file depending on what you want (e.g., for tsu).
+
+    python run_unik_detection.py --config ./config/tsu-cross-subject/train_joint.yaml
+    
 
 ## Citation
 If you find this code useful for your research, please consider citing our paper:
 ```bibtex
-@article{yang2021unik,
+@InProceedings{yang2021unik,
       title={UNIK: A Unified Framework for Real-world Skeleton-based Action Recognition}, 
       author={Di Yang and Yaohui Wang and Antitza Dantcheva and Lorenzo Garattoni and Gianpiero Francesca and Francois Bremond},
-      year={2021},
-      journal={BMVC}
+      booktitle={BMVC},
+      year={2021}
 }
 
-@article{yang2022via,
-      title={ViA: View-invariant Skeleton Action Representation Learning via Motion Retargeting}, 
-      author={Di Yang and Yaohui Wang and Antitza Dantcheva and Lorenzo Garattoni and Gianpiero Francesca and Francois Bremond},
-      year={2022},
-      journal={arXiv preprint arXiv:2209.00065}
+@InProceedings{Yang_2023_ICCV,
+    author    = {Yang, Di and Wang, Yaohui and Dantcheva, Antitza and Kong, Quan and Garattoni, Lorenzo and Francesca, Gianpiero and Bremond, Francois},
+    title     = {LAC - Latent Action Composition for Skeleton-based Action Segmentation},
+    booktitle = {ICCV},
+    year      = {2023}
 }
 ```
