@@ -1,0 +1,44 @@
+work_dir: ./work_dir/tsu/xsub/unik_joint
+model_saved_name: ./runs/tsu/tsu_cs_unik_joint
+# feeder
+feeder: feeders.feeder.Feeder_det
+train_feeder_args:
+  data_path: ./data/tsu/xsub/train_data_joint.npy
+  label_path: ./data/tsu/xsub/train_label.pkl
+  data_path: /data/stars/user/dyang/projects2021/TAG_unik/Movie/data/tsu-mw/xsub/train_data_joint.npy
+  label_path: /data/stars/user/dyang/projects2021/TAG_unik/Movie/data/tsu-mw/xsub/train_label.pkl
+  debug: False
+  random_choose: False
+  random_shift: False
+  random_move: False
+  window_size: -1
+  normalization: False
+
+test_feeder_args:
+  data_path: /data/stars/user/dyang/projects2021/TAG_unik/Movie//data/tsu-mw/xsub/val_data_joint.npy
+  label_path: /data/stars/user/dyang/projects2021/TAG_unik/Movie//data/tsu-mw/xsub/val_label.pkl
+  debug: False
+  random_choose: False
+  window_size: -1
+
+# model
+model: model.detector.Model
+model_args:
+  weights: /data/stars/user/dyang/projects2021/UNIK/weights/weights-posetics.pt # ./weights/weights-posetics.pt
+  num_class: 51
+  num_joints: 17
+  num_person: 2
+  in_channels: 2
+  
+#optim
+weight_decay: 0.0005 
+base_lr: 0.01 #pdan 0.001
+optimizer: SGD
+
+# training
+device: [0]
+batch_size: 32
+test_batch_size: 16
+num_epoch: 50
+nesterov: True
+
