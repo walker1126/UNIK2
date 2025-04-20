@@ -47,7 +47,7 @@
              - ... .json
                ... .json
                ...
-           - smarthome_CV_51.json
+           - smarthome_CS_51.json
            - smarthome_CV_51.json
    
          -...
