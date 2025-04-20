@@ -139,9 +139,9 @@ def gendata(data_path, out_path, split_path, benchmark='xview', part='eval'):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Smarthome Data Converter.')
-    parser.add_argument('--data_path', default='/data/stars/share/smarthome/untrimmed/smarthome_untrimmed/untrimmed_json_complet/')
+    parser.add_argument('--data_path', default='./data/tsu_raw/tsu_skeletons/')
     parser.add_argument('--split_path',
-                        default='smarthome_CS_51.json')
+                        default='./data/tsu_raw/smarthome_CS_51.json')
 
     parser.add_argument('--out_folder', default='../data/tsu/')
 
